@@ -22,10 +22,11 @@ Here is my current design flow: ![Hifi Design Screens](HIfi.png)
    - Full CRUD on Tasks
    - Users will have login, register and logout(end session)
    
-3. The requirements are to have full CRUD on at least 2 models, I think it would make more sense for me to do that on tasks and for projects, I initially thought about doing it for Users but the screens I projected to have would not make sense, and while I am planning it would make sense to reuse a lot of the same language because each route needs to be protected and utilize authorization checks. 
+3. The requirements are to have full CRUD on at least 2 models, I think it would make more sense for me to do that on tasks and for projects, I initially thought about doing it for Users but the screens I projected to have would not make sense, and while I am planning it would make sense to reuse a lot of the same language because each route needs to be protected and utilize authorization checks. I took some time planning and making tighter more thorough schema for my user model!
 
 
 ### Resources:
 - [Oauth](https://www.youtube.com/watch?v=sakQbeRjgwg)
 - [CORS](https://perscholas.instructure.com/courses/2978/pages/module-16-unifying-user-interfaces-with-web-applications)
 - [CORS](https://pscohorts.slack.com/archives/C09JJPM4760/p1769542731678199)
+- [Next.js](https://nextjs.org/docs/app/guides/backend-for-frontend)
