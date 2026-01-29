@@ -22,9 +22,14 @@ router.post('/register' ,async (req,res) => {
 
         //return the user but dont return the hashbrowned password
         return res.status(201).json({
-            message: 'User'
-        };
-        message: 'This user was registered successfully'
+            message: 'You were registered successfully',
+            user: {
+                _id: newUser._id,
+                username: newUser.username,
+                email: newUser.email,
+            },
+        });
+        
     } catch (error) {
         res.status(400).json({message: 'We could not register this user', error:error.message});
     }
