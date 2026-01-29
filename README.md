@@ -28,7 +28,10 @@ Here is my current design flow: ![Hifi Design Screens](HIfi.png)
 3. Reusable components
     - Form textboxes
     - Buttons
-    - Header
+    - Header/Navbar
+    - Project modal
+    - Task modal
+    - Task cards
 4. CRUD On:
    - User
 
@@ -37,7 +40,8 @@ Here is my current design flow: ![Hifi Design Screens](HIfi.png)
   - Logo: ![Logo](2.png)
   - Colors : E9FF86, FFB2E8, F6F5AE , FC6431
   - Font: Instrument Serif
-
+6. State Logic:
+ So projects will have to be tracked I plan on using a drop down as I think that will make it much easier, and then the project selected will have to be loaded, because tasks are nested in projects that should be easier to handle than by user. A user will also have to update task status, add tasks, and delete tasks.
 #### Backend
 
 
