@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 function auth(req,res, next){
-   const authHeader = req.headers.authorization; //takes the auth header instead of variables
+   const authHeader = req.headers.authorization; //takes the auth header instead of variables (added source to readme)
 
    if(!authHeader)//middleware stop the response and give it an error.
     {
