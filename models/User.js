@@ -20,6 +20,15 @@ const userSchema = new mongoose.Schema({
         required:true,
         minlength: 7
     }
-
-    //hashbrown the password
-})
+});
+ //hashbrown the password
+ userSchema.pre('save', async function (){
+    if(this.isNew || this.isModified('password'))
+        {this.password = await bcrypt.hash(this.password , 10)
+    }
+ });
+ //compare passwords at login
+ userSchema.methods.isCorrectPassword = async function(regularpw) {
+    return bcrypt.compare(regularpw, this.password);
+ };
+ module.exports = mongoose.model('User', userSchema);
