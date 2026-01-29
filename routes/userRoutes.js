@@ -57,5 +57,12 @@ router.post('/login', async (req,res)=>{
             email: user.email,
             username: user.username
         };
+        const token = jwt.sign({data:payload} ,  process.env.JWT_SECRET,{ expiresIn: '1h'});
+        res.json({token,user});
+    } catch (error) {
+        res.status(500).json({message: 'Uh-oh the login has failed',
+            error:error.message
+        });
     }
-})
+});
+module.exports = router ;
