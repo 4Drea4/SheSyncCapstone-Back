@@ -4,6 +4,7 @@ require('dotenv').config();
 const connectDB = require('./config/connection');
 const app =express();
 const PORT =  process.env.PORT || 3001;
+const projectRoutes = require('./routes/api/projectRoutes');
 
 //middleware
 app.use(cors({origin: process.env.CLIENT_ORIGIN }));
@@ -16,6 +17,10 @@ app.get('/', (req,res)=> {
 
 //database connection
 connectDB();
+
+
+//routes
+app.use('/api/projects' , projectRoutes);
 
 app.listen(PORT, ()=> {
     console.log(`Server is running on port ${PORT}`)
