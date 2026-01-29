@@ -27,3 +27,5 @@ Here is my current design flow: ![Hifi Design Screens](HIfi.png)
 
 ### Resources:
 - [Oauth](https://www.youtube.com/watch?v=sakQbeRjgwg)
+- [CORS](https://perscholas.instructure.com/courses/2978/pages/module-16-unifying-user-interfaces-with-web-applications)
+- [CORS](https://pscohorts.slack.com/archives/C09JJPM4760/p1769542731678199)
