@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
         unique: true,
         match: [/.+@.+\..+/, 'You need a valid email'],
         lowercase:true,
-        trime:true
+        trim:true
     },
     password: {
         type:String,
@@ -23,10 +23,11 @@ const userSchema = new mongoose.Schema({
 });
  //hashbrown the password
  userSchema.pre('save', async function (){
-    if(this.isNew || this.isModified('password'))
-        {this.password = await bcrypt.hash(this.password , 10)
-    }
- });
+    if(!this.isModified('password'))return;
+    const saltRounds = 10;
+   this.password = await bcrypt.hash(this.password ,saltRounds);
+   });
+   
  //compare passwords at login
  userSchema.methods.isCorrectPassword = async function(regularpw) {
     return bcrypt.compare(regularpw, this.password);
