@@ -31,3 +31,42 @@ router.get('/', auth, async (req,res) => {
     }
 });
 
+
+//user can get projects that are theirs
+router.get('/:id', auth, async (req, res) => {
+    try{
+        const project = await Project.findOne({_id: req.params.id, user:req.user._id });
+        if (!project) return res.status(404).json({message: 'Could not find this project'});
+        res.json(project);
+    } catch (error){
+        res.status(400).json({message: 'Uh-oh wrong project id', error: error.message});
+    }
+});
+//edit projects that belong to the user
+router.put('/:id', auth, async (req,res)=> {
+    try{
+        const updated = await Project.findOneAndUpdate(
+            {_id: req.params.id,
+                user:req.user._id},
+                req.body,
+                {new:true, runValidators:true}
+        );
+        if (!updated) return res.status(404).json({message: 'Uh-oh we couldnt find this project'});
+
+        res.json(updated);
+    } catch (error) {
+        res.status(400).json({message: 'We could not update this project', error: error.message});
+    }
+});
+
+//delete
+    router.delete('/:id' , auth, async (req,res) => {
+        try{
+            const deleted = await Project.findOneAndDelete({_id: req.params.id ,user:req.user._id });
+            if(!deleted) return res.status(404).json({message: 'Uh oh couldnt find this project'});
+            res.json({message: 'Project delted successfully'});
+        } catch (error) {
+            res.status(400).json({message: 'We could not delete this project', error:error.message});
+        }
+    });
+    module.exports = router; 
