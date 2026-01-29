@@ -34,3 +34,28 @@ router.post('/register' ,async (req,res) => {
         res.status(400).json({message: 'We could not register this user', error:error.message});
     }
 });
+
+//Post api users login route
+router.post('/login', async (req,res)=>{
+    try{
+        const {email,password} = req.body;
+        if(!email || !password) {
+            return res.status(400).json({message:'Please enter your missing email or password'});
+        }
+        const user = await User.findOne({email});
+        if(!user) {
+            return res.status(400).json({message: 'Uh-oh looks like your email or password is incorrect'});
+        }
+        const correctPass = await user.isCorrectPassword(password);
+        if(!correctPass) {
+            return res.status(400).json({message: 'Uh-oh your email or password is incorrect'});
+        }
+
+        //payload the data between react and the server
+        const payload = {
+            _id: user._id,
+            email: user.email,
+            username: user.username
+        };
+    }
+})
