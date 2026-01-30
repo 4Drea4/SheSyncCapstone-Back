@@ -5,7 +5,7 @@ const Project = require('../utils/auth');
 const auth = require('../utils/auth');
 
 //Post api projects project id tasks create tasks
-router.post('/:projectId/tasks', auth ,async (req, res,) => {
+router.post('/project/:projectId', auth ,async (req, res,) => {
 try{
     const {title, description, status} = req.body;
 
@@ -36,5 +36,24 @@ try{
         message: 'We could not create this task', error:error.message
      });
  }
+});
+
+//Get tasks for a project
+router.get('/project/:projectId', auth, async (req,res)=>{
+    try{
+        //confirm user authorization again
+        const project = await Project.findOne({
+            _id:req.params.projectId,
+            user: req.user._id,
+        });
+
+        if(!project) {
+            return res.status(403).json({message: 'This is not your project '});
+        }
+        const tasks = await Task.find({project:project._id}).sort({createdAt: -1});
+        res.json(tasks);
+    } catch (error) {
+        res.status(500).json({message: 'Could not retrieve these tasks', error: error.message});
+    }
 });
 
