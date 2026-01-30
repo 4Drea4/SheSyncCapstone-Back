@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Task = require('../models/Task');
-const Project = require('../utils/auth');
+const Project = require('../models/Project');
 const auth = require('../utils/auth');
 
 //Post api projects project id tasks create tasks
@@ -14,7 +14,7 @@ try{
     }
     //find the project first
     const project = await Project.findOne({
-        id: req.params.projectId, 
+        _id: req.params.projectId, 
         user:req.user._id,
     });
     //check user because project belongs to user 
@@ -75,7 +75,7 @@ router.put('/:taskId', auth, async (req,res)=> {
         if(!project) {
             return res.status(403).json({message: 'You can not do that hon, this is not your project'});
         }
-        const updatedTask = await Task.findByIdAndUdpdate(req.params.taskId, req.body, {new: true, runValidators: true});
+        const updatedTask = await Task.findByIdAndUpdate(req.params.taskId, req.body, {new: true, runValidators: true});
         res.json(updatedTask);
     } catch (error) {
         res.status(400).json({
