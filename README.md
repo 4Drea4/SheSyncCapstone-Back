@@ -23,7 +23,7 @@ Here is my current design flow: ![Hifi Design Screens](HIfi.png)
    - Users will have login, register and logout(end session)
    
 3. The requirements are to have full CRUD on at least 2 models, I think it would make more sense for me to do that on tasks and for projects, I initially thought about doing it for Users but the screens I projected to have would not make sense, and while I am planning it would make sense to reuse a lot of the same language because each route needs to be protected and utilize authorization checks. I took some time planning and making tighter more thorough schema for my user model!
-Did some research on why Next always gives me errors and I believe it is because I send a response and call next function as well and thats why it always gives me the middlware is not a function error. So I will be keen on that.
+Did some research on why Next always gives me errors and I believe it is because I send a response and call next function as well and thats why it always gives me the middlware is not a function error. So I will be keen on that. I also want to make sure I update the task model with user. 
 
 ### Resources:
 - [Oauth](https://www.youtube.com/watch?v=sakQbeRjgwg)
