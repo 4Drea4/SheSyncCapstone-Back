@@ -4,7 +4,7 @@ const Task = require('../models/Task');
 const Project = require('../utils/auth');
 const auth = require('../utils/auth');
 
-//Pots api projects project id tasks create tasks
+//Post api projects project id tasks create tasks
 router.post('/:projectId/tasks', auth ,async (req, res,) => {
 try{
     const {title, description, status} = req.body;
