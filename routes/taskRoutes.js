@@ -83,3 +83,31 @@ router.put('/:taskId', auth, async (req,res)=> {
         });
     }
 });
+//delete the task /tasks/:taskId
+router.delete('/:taskId', auth, async (req,res)=> {
+
+    try{
+        const task = await Task.findById(req.params.taskId);
+
+        if(!task) {
+            return res.status(404).json({message: 'Could not find this task'})
+        }
+        const project = await Project.findOne({
+            _id: task.project,
+            user: req.user._id,
+        });
+
+        if (!project){
+            return res.status(403).json({message : 'Uh-oh you do not own this project'});
+        }
+        await Task.findByIdAndDelete(req.params.taskId);
+
+        res.json({message:'You successfully deleted this task'});
+    } catch (error) {
+        res.status(400).json({
+            message: 'Could not delete this task', error:error.message
+        });
+    }
+});
+
+module.exports = router;
