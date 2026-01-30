@@ -1,4 +1,4 @@
-const express = require('expresss');
+const express = require('express');
 const router = express.Router();
 const Project = require('../../models/Project');
 const auth = require('../../utils/auth');
@@ -16,7 +16,7 @@ router.post('/', auth, async (req,res)=> {
       description,
       user: req.user._id  
     });
-    res.status(201).json(protect);
+    res.status(201).json(project);
     } catch (error) {
         res.status(400).json({message: 'Uh-oh we could not create this project', error: error.message});
     }
