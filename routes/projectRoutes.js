@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Project = require('../../models/Project');
-const auth = require('../../utils/auth');
+const Project = require('../models/Project');
+const auth = require('../utils/auth');
 
 //create a project post  /api projects
 router.post('/', auth, async (req,res)=> {
