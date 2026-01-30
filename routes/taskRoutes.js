@@ -57,3 +57,29 @@ router.get('/project/:projectId', auth, async (req,res)=>{
     }
 });
 
+//update a task put/tasks/taskId
+
+router.put('/:taskId', auth, async (req,res)=> {
+    try{
+        const task = await Task.findById(req.params.taskId);
+
+        if(!task) {
+            return res.status(404).json({message: 'Could not find this task'});
+        }
+        //need to find the project thats a parent of this task
+        const project = await Project.findOne({
+            _id:task.project,
+            user: req.user._id,
+        });
+
+        if(!project) {
+            return res.status(403).json({message: 'You can not do that hon, this is not your project'});
+        }
+        const updatedTask = await Task.findByIdAndUdpdate(req.params.taskId, req.body, {new: true, runValidators: true});
+        res.json(updatedTask);
+    } catch (error) {
+        res.status(400).json({
+            message: 'Could not update this task', error: error.message
+        });
+    }
+});
