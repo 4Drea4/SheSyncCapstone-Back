@@ -42,7 +42,7 @@ router.get('/:id', auth, async (req, res) => {
         res.status(400).json({message: 'Uh-oh wrong project id', error: error.message});
     }
 });
-//edit projects that belong to the user
+//edit projects that belong to the user PUT api/projects/:id
 router.put('/:id', auth, async (req,res)=> {
     try{
         const updated = await Project.findOneAndUpdate(
