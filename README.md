@@ -3,6 +3,24 @@
 *1/28/26*
 
 ### Install Instructions
+To run this project locally you will need Node.js, MongoDb Atlas , Git and Postman for testing.
+
+1. First you will want to clone this repo:
+- git clone <https://github.com/4Drea4/SheSyncCapstone-Back.git>
+- Make sure you are in the backend:
+
+1. To set up my environment I :
+    - npm init -y 
+    - npm i dotenv mongoose cors bcrypt jsonwebtoken 
+
+2. Create an .env file (make sure you add it to your gitignore)
+- PORT=3000
+- MONGO_URI= (Add your personal uri from mongodb atlas)
+- JWT_SECRET=(a password of your choice)
+- CLIENT_ORIGIN=http://localhost:3000
+and start your backend
+
+
 
 ### Planning
 In the design phase I have already designed 4 iterations of one design and one iteration of another. I am done designing but think there was a better way to streamline the User Flow so that I could use less screens. However I do think because so much of my designs I designed to be re-used as either components, or have the same style that will allow me to cut down on time when it comes to design and styling.
