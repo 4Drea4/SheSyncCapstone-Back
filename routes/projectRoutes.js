@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Project = require('../models/Project');
 const auth = require('../utils/auth');
+const Task = require("../models/Task");
 
 //create a project post  /api projects
 router.post('/', auth, async (req,res)=> {
@@ -62,11 +63,17 @@ router.put('/:id', auth, async (req,res)=> {
 //delete
     router.delete('/:id' , auth, async (req,res) => {
         try{
-            const deleted = await Project.findOneAndDelete({_id: req.params.id ,user:req.user._id });
-            if(!deleted) return res.status(404).json({message: 'Uh oh couldnt find this project'});
-            res.json({message: 'Project delted successfully'});
+            const deleted = await Project.findOneAndDelete({_id: req.params.id ,
+            user:req.user._id });
+
+            if(!deleted)
+                 return res.status(404).json({message: 'Uh oh couldnt find this project'});
+
+            res.json({message: 'Project deleted successfully'});
+
         } catch (error) {
-            res.status(400).json({message: 'We could not delete this project', error:error.message});
+            res.status(400).json({
+                message: 'We could not delete this project', error:error.message});
         }
     });
     module.exports = router; 
