@@ -18,7 +18,8 @@ To run this project locally you will need Node.js, MongoDb Atlas , Git and Postm
 - MONGO_URI= (Add your personal uri from mongodb atlas)
 - JWT_SECRET=(a password of your choice)
 - CLIENT_ORIGIN=http://localhost:3000
-and start your backend
+
+and start your backend with node server.js
 
 
 
@@ -51,4 +52,4 @@ Did some research on why Next always gives me errors and I believe it is because
 - [Authorization and headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Authorization)
 - [useAuthHeader](https://authkit.arkadip.dev/reference/react-auth-kit/hooks/useAuthHeader/)
 - [Auth header example](https://www.guvi.in/blog/protecting-routes-with-jwt-middleware-in-node-js/?utm_source=chatgpt.com)
-- [Route logout](https://www.youtube.com/watch?v=ywvrRC6-W-U)
+- [Route logout - Thanks Nancy!](https://www.youtube.com/watch?v=ywvrRC6-W-U)
