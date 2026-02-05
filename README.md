@@ -2,6 +2,10 @@
 ## Andrea E
 *1/28/26*
 
+Link to Front Live: [Front](https://shesynccapstone-front.onrender.com)
+Link to Back Live: [Back](https://shesynccapstone-back.onrender.com)
+Link to Front Repo: [Front End Repo](https://github.com/4Drea4/SheSyncCapstone-Front)
+
 ### Install Instructions
 To run this project locally you will need Node.js, MongoDb Atlas , Git and Postman for testing.
 
@@ -21,7 +25,7 @@ To run this project locally you will need Node.js, MongoDb Atlas , Git and Postm
 
 and start your backend with node server.js
 
-
+3. To get the frontend repo please see: <https://github.com/4Drea4/SheSyncCapstone-Front>
 
 ### Planning
 In the design phase I have already designed 4 iterations of one design and one iteration of another. I am done designing but think there was a better way to streamline the User Flow so that I could use less screens. However I do think because so much of my designs I designed to be re-used as either components, or have the same style that will allow me to cut down on time when it comes to design and styling.
